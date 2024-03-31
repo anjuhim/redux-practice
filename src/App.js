@@ -16,7 +16,9 @@ function App() {
 
   return (
     <div>
-      <div>count : {count}</div>
+      <button onClick={login}>Login</button>
+      <Box />
+      <h3>count : {count}</h3>
       <button
         onClick={() => {
           increase('INCREASE', { num: 5 });
@@ -39,8 +41,6 @@ function App() {
         {' '}
         초기화
       </button>
-      <button onClick={login}>Login</button>
-      <Box />
     </div>
   );
 }
