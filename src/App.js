@@ -1,23 +1,32 @@
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { useState } from 'react';
+import Box from './component/Box';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const increase = () => {
-    setCount(count + 1);
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
+  const increase = (type) => {
+    dispatch({ type });
   };
   return (
     <div>
       <div>count : {count}</div>
-      <button onClick={increase}>증가</button>
       <button
         onClick={() => {
-          setCount(0);
+          increase('INCREASE');
+        }}
+      >
+        증가
+      </button>
+      <button
+        onClick={() => {
+          increase('RESET-COUNT');
         }}
       >
         {' '}
         초기화
       </button>
+      <Box />
     </div>
   );
 }
