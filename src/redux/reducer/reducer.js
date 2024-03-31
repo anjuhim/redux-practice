@@ -1,5 +1,7 @@
 let initialState = {
   count: 0,
+  id: '',
+  name: '',
 };
 
 // reducer는 행동지침을 들고있다.
@@ -15,9 +17,13 @@ function reducer(state = initialState, action) {
 
   switch (action.type) {
     case 'INCREASE':
-      return { ...state, count: state.count + 1 };
+      return { ...state, count: state.count + action.payload.num };
+    case 'DECREMENT':
+      return { ...state, count: state.count - action.payload.num };
     case 'RESET-COUNT':
       return { ...state, count: 0 };
+    case 'LOGIN':
+      return { ...state, id: action.payload.id, name: action.payload.name };
     default:
       return { ...state };
   }

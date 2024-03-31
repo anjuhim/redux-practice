@@ -3,7 +3,12 @@ import { useSelector } from 'react-redux';
 
 const GrandSunBox = () => {
   const count = useSelector((state) => state.count);
-  return <div>GrandSunBox {count}</div>;
+  const name = useSelector((state) => state.name);
+  return (
+    <div>
+      GrandSun {name} Box {count}
+    </div>
+  );
 };
 
 export default GrandSunBox;

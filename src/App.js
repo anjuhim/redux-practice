@@ -5,18 +5,31 @@ import Box from './component/Box';
 function App() {
   const count = useSelector((state) => state.count);
   const dispatch = useDispatch();
-  const increase = (type) => {
-    dispatch({ type });
+  const increase = (type, payload) => {
+    // payload 함수의 매개변수 같은 느낌.. 필요한 값을 전달
+    dispatch({ type, payload });
   };
+
+  const login = () => {
+    dispatch({ type: 'LOGIN', payload: { id: 'userA', name: 'A' } });
+  };
+
   return (
     <div>
       <div>count : {count}</div>
       <button
         onClick={() => {
-          increase('INCREASE');
+          increase('INCREASE', { num: 5 });
         }}
       >
-        증가
+        5씩 증가
+      </button>
+      <button
+        onClick={() => {
+          increase('DECREMENT', { num: 5 });
+        }}
+      >
+        5씩 감소
       </button>
       <button
         onClick={() => {
@@ -26,6 +39,7 @@ function App() {
         {' '}
         초기화
       </button>
+      <button onClick={login}>Login</button>
       <Box />
     </div>
   );
